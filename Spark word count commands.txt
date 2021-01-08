@@ -1,0 +1,15 @@
+val text = sc.textFile("C:/Pakistan.txt")
+
+text.collect
+
+val counts= text.flatMap(line => line.split(" "))
+
+counts.collect
+
+val mapf=counts.map(word => (word,1))
+
+val reducef=mapf.reduceByKey(_+_)
+
+reducef.collect
+
+reducef.saveAsTextFile("C:/Number_of_Words")
